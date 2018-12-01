@@ -6,9 +6,11 @@ public class Main {
        String input;
         boolean valid = false;
 
+        StringOut.printNewLine();
         StringOut.printBlock("Algoritmo de Huffman");
         StringOut.printBlock("A qualquer momento, digite \"exit\" para sair");
         StringOut.printNewLine();
+        StringOut.printSeparator();
 
         do {
             StringOut.printInputDialog("Digite a quantidade de símbolos");

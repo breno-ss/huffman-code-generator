@@ -64,10 +64,17 @@ public class BinMinHeap {
             }
         }
         constroiHeap();
+
+        StringOut.printSeparator();
     }
 
     /* Executa o algoritmo de Huffman. */
     public void aplicaHuffman() {
+        int count = 1;
+
+        StringOut.printSeparator();
+        StringOut.printBlock("Etapas do Algoritmo de Huffman:");
+
         while (n > 1) {
             Arvbin a1 = removeMin();
             Arvbin a2 = removeMin();
@@ -76,13 +83,22 @@ public class BinMinHeap {
 
             insere(parent);
 
+            StringOut.printSeparator();
+            StringOut.printBlock("PASSO " + count);
             imprime();
+            count++;
         }
     }
 
     /* Chama o método mostra códigos da classe Arvbin. */
     public void mostraCodigos() {
-        /* O grupo deve preencher a implementação. */
+        StringOut.printSeparator();
+        StringOut.printBlock("Representação da árvore em pré-ordem:");
+        vetor[1].mostra();
+
+        StringOut.printNewLine(2);
+        StringOut.printSeparator();
+        vetor[1].mostraCodigo("");
     }
 
     /* Insere x na heap. */
@@ -124,9 +140,8 @@ public class BinMinHeap {
 
     /* Imprime o conteúdo da heap. */
     public void imprime() {
-//        TODO: Melhorar a formatação da árvore
+//        TODO: Aprimorar a formatação da árvore
 
-        StringOut.printSeparator();
         StringOut.printBlock("Representação em camadas:");
 
         int s = n;
@@ -156,6 +171,5 @@ public class BinMinHeap {
             StringOut.printBlock("(" + i + ") " + vetor[i].toString() + " ");
         }
 
-        StringOut.printSeparator();
     }
 }

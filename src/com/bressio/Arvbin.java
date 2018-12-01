@@ -26,12 +26,25 @@ public class Arvbin implements Comparable<Arvbin>{
 
     /* Imprime o conteúdo da árvore em pré-ordem. */
     public void mostra() {
-        /* O grupo deve preencher a implementação */
+        StringOut.printInline("( ");
+        StringOut.printInline(String.valueOf(frequencia) + " " + simbolo);
+        if (esq != null) {
+            esq.mostra();
+        }
+        if (dir != null) {
+            dir.mostra();
+        }
+        StringOut.printInline(" )");
     }
 
     /* Novo método para imprimir os códigos de Huffman de cada símbolo na árvore. */
-    public void mostraCodigo() {
-        /* O grupo deve preencher a implementação */
+    public void mostraCodigo(String codigo) {
+        if (simbolo != ' ') {
+            StringOut.printBlock("Símbolo: " + simbolo + " | Codificação: " + codigo);
+        } else {
+            esq.mostraCodigo(codigo + 0);
+            dir.mostraCodigo(codigo + 1);
+        }
     }
 
     public int getFrequencia() {
