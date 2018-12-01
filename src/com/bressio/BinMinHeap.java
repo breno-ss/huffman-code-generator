@@ -1,13 +1,9 @@
 package com.bressio;
 
-import java.util.Scanner;
-
 public class BinMinHeap {
     private int n; /* Numero de elementos no heap */
     private int tam; /* Tamanho do heap */
     private	Arvbin[] vetor; /* Vetor com elementos */
-
-    private Scanner scanner = new Scanner(System.in);
 
     /* Constrói heap vazio a partir dos elementos (caracteres). */
     public BinMinHeap(int tamanho) {
@@ -39,7 +35,7 @@ public class BinMinHeap {
             StringFormat.printInputDialog(
                     "Digite o símbolo e a frequência" +
                             " (" + (i + 1 - errors) + "/" + tam + ")");
-            String input = scanner.nextLine();
+            String input = StringIO.getInstance().textInput();
             if (StringFormat.isValid(input)) {
                 vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
             } else {

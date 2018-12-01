@@ -1,12 +1,10 @@
 package com.bressio;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.Collections;
 
 public final class StringFormat {
 
-    private StringFormat() { }
+    private StringFormat() {}
 
     public static boolean isValid(String str) {
         return str.matches("^. \\d*$");
@@ -31,5 +29,4 @@ public final class StringFormat {
     public static String repeat(String str, int n) {
         return String.join("", Collections.nCopies(n, str));
     }
-
 }
