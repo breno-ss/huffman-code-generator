@@ -1,7 +1,7 @@
 package com.bressio;
 
 /* Nessa implementação, os conceitos de "nó" e "árvore" se misturam. */
-public class Arvbin {
+public class Arvbin implements Comparable<Arvbin>{
     private char simbolo; /* Símbolo armazenado na raiz. */
     private int frequencia; /* Frequência do símbolo armazenado na raiz. */
     private Arvbin esq, dir; /* Referências para subárvores esquerda e direita. */
@@ -29,6 +29,16 @@ public class Arvbin {
     /* Novo método para imprimir os códigos de Huffman de cada símbolo na árvore. */
     public void mostraCodigo() {
         /* O grupo deve preencher a implementação */
+    }
+
+    @Override
+    public int compareTo(Arvbin arvbin) {
+        return Integer.compare(frequencia, arvbin.frequencia);
+    }
+
+    @Override
+    public String toString() {
+        return "[" + simbolo + " | " + frequencia + "]";
     }
 
     /* Caso necessário, o grupo pode definir novos métodos. */

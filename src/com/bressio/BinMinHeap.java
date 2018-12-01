@@ -7,7 +7,7 @@ public class BinMinHeap {
 
     /* Constrói heap vazio a partir dos elementos (caracteres). */
     public BinMinHeap(int tamanho) {
-        n = 0;
+        n = tamanho;
         tam = tamanho;
         vetor = new Arvbin[tamanho+1];
     }
@@ -20,12 +20,33 @@ public class BinMinHeap {
 
     /* Refaz a condição de heap (heapify). */
     public void refaz(int i) {
-        /* O grupo deve preencher a implementação. */
+        Arvbin x = vetor[i];
+
+        while (2 * i <= n) {
+            int leftmostChild = 2 * i;
+            int rightmostChild = (2 * i) + 1;
+            int smallestChild = leftmostChild;
+
+            if ((leftmostChild != n) && (vetor[rightmostChild].compareTo(vetor[leftmostChild]) < 0)) {
+                smallestChild = rightmostChild;
+            }
+            
+            if (vetor[smallestChild].compareTo(x) < 0) {
+                vetor [i] = vetor[smallestChild];
+            } else {
+                break;
+            }
+
+            i = smallestChild;
+        }
+
+        vetor[i] = x;
     }
 
     /* Constrói a heap (build heap). */
     public void constroiHeap() {
-        /* O grupo deve preencher a implementação. */
+        for( int i = n / 2; i > 0; i-- )
+            refaz(i);
     }
 
     /* Lê dados via teclado e insere na heap. */
@@ -70,6 +91,10 @@ public class BinMinHeap {
 
     /* Imprime o conteúdo da heap. */
     public void imprime() {
-        /* O grupo deve preencher a implementação. */
+        for(int i = 1; i <= n; i++)
+            StringFormat.printColumn(vetor[i].toString() + " ");
+
+        System.out.println();
+
     }
 }
