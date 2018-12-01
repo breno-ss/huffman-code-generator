@@ -9,7 +9,10 @@ public class Arvbin {
 	/* Construtor de árvore sem subárvores (dir = esq = null). São fornecidos
 	 * apenas o símbolo e a frequência da raiz. */
 	public Arvbin(char simbolo, int frequencia) {
-		/* O grupo deve preencher a implementação */
+		this.simbolo = simbolo;
+        this.frequencia = frequencia;
+		esq = null;
+		dir = null;
 	}
 	
 	/* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
