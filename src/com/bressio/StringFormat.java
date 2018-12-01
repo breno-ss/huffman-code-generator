@@ -6,8 +6,8 @@ public final class StringFormat {
 
     private StringFormat() {}
 
-    public static boolean isValid(String str) {
-        return str.matches("^. \\d*$");
+    public static boolean isValid(String str, String pattern) {
+        return str.matches(pattern);
     }
 
     public static char getChar(String str) {

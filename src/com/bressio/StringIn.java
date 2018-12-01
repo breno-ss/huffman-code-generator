@@ -12,7 +12,11 @@ public class StringIn {
     }
 
     public String textInput() {
-        return scanner.nextLine();
+        String input = scanner.nextLine();
+        if (input.equals("exit")) {
+            System.exit(0);
+        }
+        return input;
     }
 
     public static StringIn getInstance(){

@@ -56,7 +56,7 @@ public class BinMinHeap {
                     "Digite o símbolo e a frequência" +
                             " (" + (i + 1 - errors) + "/" + tam + ")");
             String input = StringIn.getInstance().textInput();
-            if (StringFormat.isValid(input)) {
+            if (StringFormat.isValid(input, "^. \\d*$")) {
                 vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
             } else {
                 StringOut.printError("Você digitou uma entrada inválida");

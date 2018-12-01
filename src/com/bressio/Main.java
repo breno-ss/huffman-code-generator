@@ -1,22 +1,29 @@
 package com.bressio;
 
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String args[]) {
-        Scanner scanner = new Scanner(System.in);
-        int n;
+       String input;
+        boolean valid = false;
 
-        System.out.println("Quantos simbolos?");
-        n = scanner.nextInt();
+        StringOut.printBlock("Algoritmo de Huffman");
+        StringOut.printBlock("A qualquer momento, digite \"exit\" para sair");
 
-        BinMinHeap heap = new BinMinHeap(n);
-        heap.carregaDados();
-        heap.imprime();
-        heap.aplicaHuffman();
-        heap.mostraCodigos();
+        do {
+            StringOut.printInputDialog("Quantos simbolos?");
+            input = StringIn.getInstance().textInput();
 
-        scanner.close();
+            if (!StringFormat.isValid(input, "^\\d*$")) {
+                StringOut.printError("Você digitou uma entrada inválida");
+            } else {
+                valid = true;
+            }
+        } while (!valid);
+
+            BinMinHeap heap = new BinMinHeap(Integer.parseInt(input));
+            heap.carregaDados();
+            heap.imprime();
+            heap.aplicaHuffman();
+            heap.mostraCodigos();
     }
 }
