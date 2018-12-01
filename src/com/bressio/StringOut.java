@@ -44,6 +44,16 @@ public final class StringOut {
         resetColor();
     }
 
+    public static void printNewLine() {
+        System.out.println();
+    }
+
+    public static void printNewLine(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.println();
+        }
+    }
+
     private static void resetColor() {
         System.out.print(Color.RESET.getColor());
     }

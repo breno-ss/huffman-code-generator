@@ -121,7 +121,7 @@ public class BinMinHeap {
             s = (int) (s / 1.75);
             offset = StringFormat.repeat(" ", s);
             count++;
-            StringOut.printBlock("\n");
+            StringOut.printNewLine(2);
         }
 
         StringOut.printBlock("Representação em lista:");

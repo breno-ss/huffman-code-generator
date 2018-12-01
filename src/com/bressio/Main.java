@@ -8,9 +8,10 @@ public class Main {
 
         StringOut.printBlock("Algoritmo de Huffman");
         StringOut.printBlock("A qualquer momento, digite \"exit\" para sair");
+        StringOut.printNewLine();
 
         do {
-            StringOut.printInputDialog("Quantos simbolos?");
+            StringOut.printInputDialog("Digite a quantidade de símbolos");
             input = StringIn.getInstance().textInput();
 
             if (!StringFormat.isValid(input, "^\\d*$")) {
