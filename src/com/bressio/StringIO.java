@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class StringIO {
 
     private static final StringIO singleton = new StringIO();
-    private static Scanner scanner;
+    private Scanner scanner;
 
     private StringIO() {
         scanner = new Scanner(System.in);
