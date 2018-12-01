@@ -34,12 +34,12 @@ public final class StringOut {
         resetColor();
     }
 
-    public static void printColumn(String str) {
+    public static void printBlock(String str) {
         System.out.println(Color.BLUE.getColor() + str);
         resetColor();
     }
 
-    public static void printRow(String str) {
+    public static void printInline(String str) {
         System.out.print(Color.BLUE.getColor() + str);
         resetColor();
     }

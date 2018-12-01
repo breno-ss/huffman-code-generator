@@ -102,33 +102,33 @@ public class BinMinHeap {
     public void imprime() {
 //        TODO: Melhorar a formatação da árvore
 
-        StringOut.printColumn("Representação em árvore:");
+        StringOut.printBlock("Representação em árvore:");
 
         int s = n;
         String offset = StringFormat.repeat(" ", s);
         int count = 0;
         while (count <= Math.sqrt(n)) {
-            StringOut.printRow(offset);
+            StringOut.printInline(offset);
             if (count == 0) {
-                StringOut.printRow(vetor[1].toString());
+                StringOut.printInline(vetor[1].toString());
             } else {
                 for (int i = (int) Math.pow(2, count); i <= Math.pow(2, count + 1) - 1; i++) {
                     if (i <= n) {
-                        StringOut.printRow(vetor[i].toString() + " ");
+                        StringOut.printInline(vetor[i].toString() + " ");
                     }
                 }
             }
             s = (int) (s / 1.75);
             offset = StringFormat.repeat(" ", s);
             count++;
-            StringOut.printColumn("\n");
+            StringOut.printBlock("\n");
         }
 
-        StringOut.printColumn("Representação em lista:");
-        StringOut.printColumn("(index) [símbolo | frequência]");
+        StringOut.printBlock("Representação em lista:");
+        StringOut.printBlock("(index) [símbolo | frequência]");
 
         for(int i = 1; i <= n; i++) {
-            StringOut.printColumn("(" + i + ") " + vetor[i].toString() + " ");
+            StringOut.printBlock("(" + i + ") " + vetor[i].toString() + " ");
         }
     }
 }
