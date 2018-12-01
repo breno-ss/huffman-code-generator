@@ -14,8 +14,7 @@ public class BinMinHeap {
 
     /* Testa se a heap está vazia. */
     public boolean vazia() {
-        /* O grupo deve preencher a implementação. */
-        return false;
+        return n == 0;
     }
 
     /* Refaz a condição de heap (heapify). */
@@ -85,8 +84,19 @@ public class BinMinHeap {
 
     /* Remove e retorna o menor item. */
     public Arvbin removeMin() {
-        /* O grupo deve preencher a implementação. */
-        return null;
+        Arvbin smallestElement;
+
+        if(this.vazia()) {
+            StringFormat.printError("Fila de prioridades vazia!");
+            return null;
+        }
+
+        smallestElement = vetor[1];
+        vetor[1] = vetor[n];
+        n--;
+        refaz(1);
+
+        return smallestElement;
     }
 
     /* Imprime o conteúdo da heap. */
