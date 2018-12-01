@@ -7,7 +7,7 @@ public final class StringOut {
     private enum Color {
         RESET("\u001B[0m"), GREEN("\u001B[32m"), RED("\u001B[31m"), BLUE("\u001B[34m");
 
-        private Color(String color) {
+        Color(String color) {
             this.color = color;
         }
         private String color;
@@ -36,6 +36,11 @@ public final class StringOut {
 
     public static void printColumn(String str) {
         System.out.println(Color.BLUE.getColor() + str);
+        resetColor();
+    }
+
+    public static void printRow(String str) {
+        System.out.print(Color.BLUE.getColor() + str);
         resetColor();
     }
 
