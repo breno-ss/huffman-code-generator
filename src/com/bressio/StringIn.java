@@ -2,12 +2,12 @@ package com.bressio;
 
 import java.util.Scanner;
 
-public class StringIO {
+public class StringIn {
 
-    private static final StringIO singleton = new StringIO();
+    private static final StringIn singleton = new StringIn();
     private Scanner scanner;
 
-    private StringIO() {
+    private StringIn() {
         scanner = new Scanner(System.in);
     }
 
@@ -15,7 +15,7 @@ public class StringIO {
         return scanner.nextLine();
     }
 
-    public static StringIO getInstance(){
+    public static StringIn getInstance(){
         return singleton;
     }
 }

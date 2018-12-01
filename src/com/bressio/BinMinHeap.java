@@ -52,15 +52,14 @@ public class BinMinHeap {
     public void carregaDados() {
         int errors = 0;
         for (int i = 0; i < tam + errors; i++) {
-            StringFormat.printInputDialog(
+            StringOut.printInputDialog(
                     "Digite o símbolo e a frequência" +
                             " (" + (i + 1 - errors) + "/" + tam + ")");
-            String input = StringIO.getInstance().textInput();
+            String input = StringIn.getInstance().textInput();
             if (StringFormat.isValid(input)) {
                 vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
             } else {
-                StringFormat.printError("Você digitou uma entrada inválida");
-                System.out.println();
+                StringOut.printError("Você digitou uma entrada inválida");
                 errors++;
             }
         }
@@ -87,7 +86,7 @@ public class BinMinHeap {
         Arvbin smallestElement;
 
         if(this.vazia()) {
-            StringFormat.printError("Fila de prioridades vazia!");
+            StringOut.printError("Fila de prioridades vazia!");
             return null;
         }
 
@@ -101,10 +100,8 @@ public class BinMinHeap {
 
     /* Imprime o conteúdo da heap. */
     public void imprime() {
-        for(int i = 1; i <= n; i++)
-            StringFormat.printColumn(vetor[i].toString() + " ");
-
-        System.out.println();
-
+        for(int i = 1; i <= n; i++) {
+            StringOut.printColumn(vetor[i].toString() + " ");
+        }
     }
 }
