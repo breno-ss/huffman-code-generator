@@ -68,7 +68,16 @@ public class BinMinHeap {
 
     /* Executa o algoritmo de Huffman. */
     public void aplicaHuffman() {
-        /* O grupo deve preencher a implementação. */
+        while (n > 1) {
+            Arvbin a1 = removeMin();
+            Arvbin a2 = removeMin();
+
+            Arvbin parent = new Arvbin(' ', a1.getFrequencia() + a2.getFrequencia(), a1, a2);
+
+            insere(parent);
+
+            imprime();
+        }
     }
 
     /* Chama o método mostra códigos da classe Arvbin. */
@@ -78,7 +87,22 @@ public class BinMinHeap {
 
     /* Insere x na heap. */
     public void insere(Arvbin x) {
-        /* O grupo deve preencher a implementação. */
+        if (tam == n) {
+            StringOut.printError("A lista está cheia");
+            return;
+        }
+
+        n++;
+        int pos = n;
+
+        vetor[0] = x;
+
+        while(x.compareTo(vetor[pos/2]) < 0) {
+            vetor[pos] = vetor[ pos/2 ];
+            pos /= 2;
+        }
+
+        vetor[pos] = x;
     }
 
     /* Remove e retorna o menor item. */
@@ -86,7 +110,7 @@ public class BinMinHeap {
         Arvbin smallestElement;
 
         if(this.vazia()) {
-            StringOut.printError("Fila de prioridades vazia!");
+            StringOut.printError("A lista está vazia");
             return null;
         }
 
@@ -102,7 +126,8 @@ public class BinMinHeap {
     public void imprime() {
 //        TODO: Melhorar a formatação da árvore
 
-        StringOut.printBlock("Representação em árvore:");
+        StringOut.printSeparator();
+        StringOut.printBlock("Representação em camadas:");
 
         int s = n;
         String offset = StringFormat.repeat(" ", s);
@@ -130,5 +155,7 @@ public class BinMinHeap {
         for(int i = 1; i <= n; i++) {
             StringOut.printBlock("(" + i + ") " + vetor[i].toString() + " ");
         }
+
+        StringOut.printSeparator();
     }
 }

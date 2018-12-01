@@ -54,6 +54,10 @@ public final class StringOut {
         }
     }
 
+    public static void printSeparator() {
+        System.out.println("---------------------------------------------------\n");
+    }
+
     private static void resetColor() {
         System.out.print(Color.RESET.getColor());
     }

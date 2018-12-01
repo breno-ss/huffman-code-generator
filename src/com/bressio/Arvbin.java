@@ -18,7 +18,10 @@ public class Arvbin implements Comparable<Arvbin>{
     /* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
      * são fornecidas as subárvores, que devem ter sido construídas previamente. */
     public Arvbin(char simbolo, int frequencia, Arvbin esq, Arvbin dir) {
-        /* O grupo deve preencher a implementação */
+        this.simbolo = simbolo;
+        this.frequencia = frequencia;
+        this.esq = esq;
+        this.dir = dir;
     }
 
     /* Imprime o conteúdo da árvore em pré-ordem. */
@@ -29,6 +32,10 @@ public class Arvbin implements Comparable<Arvbin>{
     /* Novo método para imprimir os códigos de Huffman de cada símbolo na árvore. */
     public void mostraCodigo() {
         /* O grupo deve preencher a implementação */
+    }
+
+    public int getFrequencia() {
+        return frequencia;
     }
 
     @Override
