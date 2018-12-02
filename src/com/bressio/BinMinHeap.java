@@ -101,6 +101,9 @@ public class BinMinHeap {
         StringOut.printTitleBlock("Dicionário:");
         StringOut.printBlock("Símbolo\t|\tCodificação");
         vetor[1].mostraCodigo("");
+
+        StringOut.printSeparator();
+        vetor[1].encode();
     }
 
     /* Insere x na heap. */

@@ -1,10 +1,14 @@
 package com.bressio;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 /* Nessa implementação, os conceitos de "nó" e "árvore" se misturam. */
 public class Arvbin implements Comparable<Arvbin>{
     private char simbolo; /* Símbolo armazenado na raiz. */
     private int frequencia; /* Frequência do símbolo armazenado na raiz. */
     private Arvbin esq, dir; /* Referências para subárvores esquerda e direita. */
+    private static Map<Character, String> dictionary;
 
     /* Construtor de árvore sem subárvores (dir = esq = null). São fornecidos
      * apenas o símbolo e a frequência da raiz. */
@@ -13,6 +17,7 @@ public class Arvbin implements Comparable<Arvbin>{
         this.frequencia = frequencia;
         esq = null;
         dir = null;
+        dictionary = new TreeMap<>();
     }
 
     /* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
@@ -41,10 +46,42 @@ public class Arvbin implements Comparable<Arvbin>{
     public void mostraCodigo(String codigo) {
         if (simbolo != ' ') {
             StringOut.printBlock(simbolo + "\t\t|\t\t" + codigo);
+            dictionary.put(simbolo, codigo);
         } else {
             esq.mostraCodigo(codigo + 0);
             dir.mostraCodigo(codigo + 1);
         }
+    }
+
+    public void encode() {
+        String input;
+        boolean undefined;
+
+        do {
+            StringOut.printInputDialog("Digite um texto");
+            input = StringIn.getInstance().textInput();
+
+            undefined = false;
+
+            for (char c : input.toCharArray()) {
+                if (!dictionary.containsKey(c)) {
+                    StringOut.printError("O texto contém caracteres fora do dicionário");
+                    undefined = true;
+                    break;
+                }
+            }
+        } while (undefined);
+
+        StringOut.printNewLine();
+        StringOut.printSeparator();
+        StringOut.printTitleBlock("Texto codificado:");
+        StringOut.printNewLine();
+
+        for (char c : input.toCharArray()) {
+            StringOut.printInline(dictionary.get(c));
+        }
+
+        StringOut.printNewLine();
     }
 
     public int getFrequencia() {
