@@ -8,7 +8,7 @@ public class Arvbin implements Comparable<Arvbin>{
     private char simbolo; /* Símbolo armazenado na raiz. */
     private int frequencia; /* Frequência do símbolo armazenado na raiz. */
     private Arvbin esq, dir; /* Referências para subárvores esquerda e direita. */
-    private static Map<Character, String> dictionary;
+    private static Map<Character, String> dictionary = new TreeMap<>();
 
     /* Construtor de árvore sem subárvores (dir = esq = null). São fornecidos
      * apenas o símbolo e a frequência da raiz. */
@@ -17,7 +17,6 @@ public class Arvbin implements Comparable<Arvbin>{
         this.frequencia = frequencia;
         esq = null;
         dir = null;
-        dictionary = new TreeMap<>();
     }
 
     /* Construtor de árvore com subárvores. Além de símbolo e frequência da raiz,
@@ -44,7 +43,7 @@ public class Arvbin implements Comparable<Arvbin>{
 
     /* Novo método para imprimir os códigos de Huffman de cada símbolo na árvore. */
     public void mostraCodigo(String codigo) {
-        if (simbolo != ' ') {
+        if (simbolo != '\t') {
             StringOut.printBlock(simbolo + "\t\t|\t\t" + codigo);
             dictionary.put(simbolo, codigo);
         } else {

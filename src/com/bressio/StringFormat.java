@@ -15,7 +15,7 @@ public final class StringFormat {
     }
 
     public static int getInt(String str) {
-        return Integer.parseInt(str.split(" ")[1]);
+        return Integer.parseInt(str.substring(2));
     }
 
     public static String repeat(String str, int n) {
