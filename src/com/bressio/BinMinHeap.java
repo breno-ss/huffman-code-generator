@@ -56,7 +56,7 @@ public class BinMinHeap {
                     "Digite o símbolo e a frequência" +
                             " (" + (i + 1 - errors) + "/" + tam + ")");
             String input = StringIn.getInstance().textInput();
-            if (StringFormat.isValid(input, "^. \\d*$")) {
+            if (StringFormat.isValid(input, "^. \\d+$")) {
                 vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
             } else {
                 StringOut.printError("Você digitou uma entrada inválida");
@@ -65,6 +65,7 @@ public class BinMinHeap {
         }
         constroiHeap();
 
+        StringOut.printNewLine();
         StringOut.printSeparator();
     }
 
@@ -73,7 +74,7 @@ public class BinMinHeap {
         int count = 1;
 
         StringOut.printSeparator();
-        StringOut.printBlock("Etapas do Algoritmo de Huffman:");
+        StringOut.printTitleBlock("Etapas do Algoritmo de Huffman:");
 
         while (n > 1) {
             Arvbin a1 = removeMin();
@@ -83,21 +84,22 @@ public class BinMinHeap {
 
             insere(parent);
 
-            StringOut.printSeparator();
-            StringOut.printBlock("PASSO " + count);
+            StringOut.printTitleBlock("PASSO " + count);
             imprime();
+            StringOut.printSeparator();
             count++;
         }
     }
 
     /* Chama o método mostra códigos da classe Arvbin. */
     public void mostraCodigos() {
-        StringOut.printSeparator();
-        StringOut.printBlock("Representação da árvore em pré-ordem:");
+        StringOut.printTitleBlock("Representação da árvore em pré-ordem:");
         vetor[1].mostra();
 
         StringOut.printNewLine(2);
         StringOut.printSeparator();
+        StringOut.printTitleBlock("Dicionário:");
+        StringOut.printBlock("Símbolo\t|\tCodificação");
         vetor[1].mostraCodigo("");
     }
 
@@ -144,7 +146,7 @@ public class BinMinHeap {
 
         StringOut.printBlock("Representação em camadas:");
 
-        int s = n;
+        int s = (n / 2) * 8;
         String offset = StringFormat.repeat(" ", s);
         int count = 0;
         while (count <= Math.sqrt(n)) {
@@ -158,18 +160,19 @@ public class BinMinHeap {
                     }
                 }
             }
-            s = (int) (s / 1.75);
+            s = s - 4 >= 0 ? s - 4 : 0;
             offset = StringFormat.repeat(" ", s);
             count++;
             StringOut.printNewLine(2);
         }
 
         StringOut.printBlock("Representação em lista:");
-        StringOut.printBlock("(index) [símbolo | frequência]");
+        StringOut.printBlock("(índice) [símbolo | frequência]");
 
         for(int i = 1; i <= n; i++) {
             StringOut.printBlock("(" + i + ") " + vetor[i].toString() + " ");
         }
 
+        StringOut.printNewLine();
     }
 }
