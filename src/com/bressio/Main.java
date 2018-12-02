@@ -3,7 +3,7 @@ package com.bressio;
 public class Main {
 
     public static void main(String args[]) {
-       String input;
+        String input;
         boolean valid = false;
 
         StringOut.printNewLine();

@@ -31,7 +31,7 @@ public class BinMinHeap {
             }
             
             if (vetor[smallestChild].compareTo(x) < 0) {
-                vetor [i] = vetor[smallestChild];
+                vetor[i] = vetor[smallestChild];
             } else {
                 break;
             }
@@ -44,7 +44,7 @@ public class BinMinHeap {
 
     /* Constrói a heap (build heap). */
     public void constroiHeap() {
-        for( int i = n / 2; i > 0; i-- )
+        for(int i = n / 2; i > 0; i--)
             refaz(i);
     }
 
@@ -149,6 +149,7 @@ public class BinMinHeap {
         int s = (n / 2) * 8;
         String offset = StringFormat.repeat(" ", s);
         int count = 0;
+
         while (count <= Math.sqrt(n)) {
             StringOut.printInline(offset);
             if (count == 0) {
