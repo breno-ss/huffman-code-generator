@@ -55,6 +55,7 @@ public class Arvbin implements Comparable<Arvbin>{
     public void encode() {
         String input;
         boolean undefined;
+        int size = 0;
 
         do {
             StringOut.printInputDialog("Digite um texto");
@@ -77,10 +78,19 @@ public class Arvbin implements Comparable<Arvbin>{
         StringOut.printNewLine();
 
         for (char c : input.toCharArray()) {
-            StringOut.printInline(dictionary.get(c));
+            String code = dictionary.get(c);
+            StringOut.printInline(code);
+            size += code.length();
         }
 
         StringOut.printNewLine();
+
+        int original = (int) Math.ceil(((8.0 * input.length()) / 8.0));
+        int compressed = (int) Math.ceil((size / 8.0));
+
+        StringOut.printBlock("Tamanho original: " + original + (original >= 2 ? " bytes" : " byte"));
+        StringOut.printBlock("Tamanho comprimido: " + compressed + (compressed >= 2 ? " bytes" : " byte"));
+        StringOut.printBlock("Redução: " + (int) (((float) compressed / original) * 100) + "%");
     }
 
     public int getFrequencia() {
