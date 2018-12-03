@@ -51,13 +51,22 @@ public class BinMinHeap {
     /* Lê dados via teclado e insere na heap. */
     public void carregaDados() {
         int errors = 0;
+        StringBuilder symbols = new StringBuilder();
+
         for (int i = 0; i < tam + errors; i++) {
             StringOut.printInputDialog(
                     "Digite o símbolo e a frequência" +
                             " (" + (i + 1 - errors) + "/" + tam + ")");
             String input = StringIn.getInstance().textInput();
+
             if (StringFormat.isValid(input, "^. \\d+$")) {
-                vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
+                if (!symbols.toString().contains(String.valueOf(StringFormat.getChar(input)))) {
+                    symbols.append(String.valueOf(StringFormat.getChar(input)));
+                    vetor[i + 1 - errors] = new Arvbin(StringFormat.getChar(input), StringFormat.getInt(input));
+                } else {
+                    StringOut.printError("Você digitou um símbolo repetido");
+                    errors++;
+                }
             } else {
                 StringOut.printError("Você digitou uma entrada inválida");
                 errors++;
