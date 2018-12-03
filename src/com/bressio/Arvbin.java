@@ -58,8 +58,18 @@ public class Arvbin implements Comparable<Arvbin>{
         int size = 0;
 
         do {
-            StringOut.printInputDialog("Digite um texto");
-            input = StringIn.getInstance().textInput();
+            boolean valid = false;
+
+            do {
+                StringOut.printInputDialog("Digite um texto para ser codificado, com base no dicionário");
+                input = StringIn.getInstance().textInput();
+
+                if (!StringFormat.isValid(input, "^.+$")) {
+                    StringOut.printError("Você digitou uma entrada inválida");
+                } else {
+                    valid = true;
+                }
+            } while (!valid);
 
             undefined = false;
 
@@ -71,6 +81,30 @@ public class Arvbin implements Comparable<Arvbin>{
                 }
             }
         } while (undefined);
+
+        StringOut.printNewLine();
+        StringOut.printSeparator();
+        StringOut.printTitleBlock("Texto codificado:");
+        StringOut.printNewLine();
+
+        for (char c : input.toCharArray()) {
+            String code = dictionary.get(c);
+            StringOut.printInline(code);
+            size += code.length();
+        }
+
+        StringOut.printNewLine();
+
+        int original = (int) Math.ceil(((8.0 * input.length()) / 8.0));
+        int compressed = (int) Math.ceil((size / 8.0));
+
+        StringOut.printBlock("Tamanho original: " + original + (original >= 2 ? " bytes" : " byte"));
+        StringOut.printBlock("Tamanho comprimido: " + compressed + (compressed >= 2 ? " bytes" : " byte"));
+        StringOut.printBlock("Redução: " + (int) (((float) compressed / original) * 100) + "%");
+    }
+
+    public void encode(String input) {
+        int size = 0;
 
         StringOut.printNewLine();
         StringOut.printSeparator();

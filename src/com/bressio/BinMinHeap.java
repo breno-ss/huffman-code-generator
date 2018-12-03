@@ -1,15 +1,27 @@
 package com.bressio;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BinMinHeap {
     private int n; /* Numero de elementos no heap */
     private int tam; /* Tamanho do heap */
     private	Arvbin[] vetor; /* Vetor com elementos */
+    private String input;
 
     /* Constrói heap vazio a partir dos elementos (caracteres). */
     public BinMinHeap(int tamanho) {
         n = tamanho;
         tam = tamanho;
         vetor = new Arvbin[tamanho+1];
+        input = null;
+    }
+
+    public BinMinHeap(int tamanho, String input) {
+        n = tamanho;
+        tam = tamanho;
+        vetor = new Arvbin[tamanho+1];
+        this.input = input;
     }
 
     /* Testa se a heap está vazia. */
@@ -78,6 +90,38 @@ public class BinMinHeap {
         StringOut.printSeparator();
     }
 
+    public void carregaDados(String input) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        for (char c : input.toCharArray()) {
+            if (!frequencyMap.containsKey(c)) {
+                frequencyMap.put(c, 1);
+            } else {
+                frequencyMap.put(c, frequencyMap.get(c) + 1);
+            }
+        }
+
+        char[] symbols = new char[tam];
+        int[] frequencies = new int[tam];
+
+        int count = 0;
+
+        for (char s : frequencyMap.keySet()){
+            symbols[count] = s;
+            frequencies[count] = frequencyMap.get(s);
+            count++;
+        }
+
+        for (int i = 0; i < tam; i++) {
+            vetor[i + 1] = new Arvbin(symbols[i], frequencies[i]);
+        }
+
+        constroiHeap();
+
+        StringOut.printNewLine();
+        StringOut.printSeparator();
+    }
+
     /* Executa o algoritmo de Huffman. */
     public void aplicaHuffman() {
         int count = 1;
@@ -112,7 +156,11 @@ public class BinMinHeap {
         vetor[1].mostraCodigo("");
 
         StringOut.printSeparator();
-        vetor[1].encode();
+        if (input != null) {
+            vetor[1].encode(input);
+        } else {
+            vetor[1].encode();
+        }
     }
 
     /* Insere x na heap. */

@@ -21,4 +21,10 @@ public final class StringFormat {
     public static String repeat(String str, int n) {
         return String.join("", Collections.nCopies(n, str));
     }
+
+    public static int countUniqueCharacters(String input) {
+        return (int) input.chars()
+                .distinct()
+                .count();
+    }
 }
