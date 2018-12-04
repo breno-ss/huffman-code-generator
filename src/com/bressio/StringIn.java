@@ -19,6 +19,25 @@ public class StringIn {
         return input;
     }
 
+    public String getInput(String request, String pattern, String invalidInputError) {
+        String input;
+        boolean valid = false;
+
+        do {
+            StringOut.printInputDialog(request);
+
+            input = textInput();
+
+            if (!StringFormat.isValid(input, pattern)) {
+                StringOut.printError(invalidInputError);
+            } else {
+                valid = true;
+            }
+        } while (!valid);
+
+        return input;
+    }
+
     public static StringIn getInstance(){
         return singleton;
     }

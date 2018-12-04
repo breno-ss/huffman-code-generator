@@ -58,18 +58,11 @@ public class Arvbin implements Comparable<Arvbin>{
         int size = 0;
 
         do {
-            boolean valid = false;
-
-            do {
-                StringOut.printInputDialog("Digite um texto para ser codificado, com base no dicionário");
-                input = StringIn.getInstance().textInput();
-
-                if (!StringFormat.isValid(input, "^.+$")) {
-                    StringOut.printError("Você digitou uma entrada inválida");
-                } else {
-                    valid = true;
-                }
-            } while (!valid);
+            input = StringIn.getInstance().getInput(
+                    "Digite um texto para ser codificado, com base no dicionário",
+                    "^.+$",
+                    "Você digitou uma entrada inválida"
+            );
 
             undefined = false;
 

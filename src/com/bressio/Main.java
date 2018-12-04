@@ -3,7 +3,6 @@ package com.bressio;
 public class Main {
 
     private static String input;
-    private static boolean valid;
 
     public static void main(String args[]) {
         StringOut.printNewLine();
@@ -22,23 +21,17 @@ public class Main {
     }
 
     public static void showMenu() {
-        valid = false;
 
-        do {
-            StringOut.printTitleBlock("M E N U");
-            StringOut.printTitleBlock("1 - Codificar com frequência manual");
-            StringOut.printTitleBlock("2 - Codificar com frequência automática");
-            StringOut.printTitleBlock("3 - Decodificar com frequência manual");
-            StringOut.printInputDialog("Digite o número de uma opção do menu");
+        StringOut.printTitleBlock("M E N U");
+        StringOut.printTitleBlock("1 - Codificar com dicionário");
+        StringOut.printTitleBlock("2 - Codificar sem dicionário");
+        StringOut.printTitleBlock("3 - Decodificar");
 
-            input = StringIn.getInstance().textInput();
-
-            if (!StringFormat.isValid(input, "^[1-3]$")) {
-                StringOut.printError("Você digitou uma opção inválida");
-            } else {
-                valid = true;
-            }
-        } while (!valid);
+        input = StringIn.getInstance().getInput(
+                "Digite o número de uma opção do menu",
+                "^[1-3]$",
+                "Você digitou uma opção inválida"
+        );
 
         switch (input) {
             case "1" : manualEncoding();
@@ -51,18 +44,12 @@ public class Main {
     }
 
     private static void manualEncoding() {
-        valid = false;
 
-        do {
-            StringOut.printInputDialog("Digite a quantidade de símbolos");
-            input = StringIn.getInstance().textInput();
-
-            if (!StringFormat.isValid(input, "^\\d+$")) {
-                StringOut.printError("Você digitou uma entrada inválida");
-            } else {
-                valid = true;
-            }
-        } while (!valid);
+        input = StringIn.getInstance().getInput(
+                "Digite a quantidade de símbolos",
+                "^\\d+$",
+                "Você digitou uma entrada inválida"
+        );
 
         BinMinHeap heap = new BinMinHeap(Integer.parseInt(input));
         heap.carregaDados();
@@ -81,18 +68,12 @@ public class Main {
     }
 
     private static void autoEncoding() {
-        valid = false;
 
-        do {
-            StringOut.printInputDialog("Digite um texto para ser codificado");
-            input = StringIn.getInstance().textInput();
-
-            if (!StringFormat.isValid(input, "^.+$")) {
-                StringOut.printError("Você digitou uma entrada inválida");
-            } else {
-                valid = true;
-            }
-        } while (!valid);
+        input = StringIn.getInstance().getInput(
+                "Digite um texto para ser codificado",
+                "^.+$",
+                "Você digitou uma entrada inválida"
+        );
 
         Stopwatch stopwatchA = new Stopwatch();
 
@@ -114,18 +95,11 @@ public class Main {
 
     private static void manualDecoding() {
 
-        valid = false;
-
-        do {
-            StringOut.printInputDialog("Digite a quantidade de símbolos");
-            input = StringIn.getInstance().textInput();
-
-            if (!StringFormat.isValid(input, "^\\d+$")) {
-                StringOut.printError("Você digitou uma entrada inválida");
-            } else {
-                valid = true;
-            }
-        } while (!valid);
+        input = StringIn.getInstance().getInput(
+                "Digite a quantidade de símbolos",
+                "^\\d+$",
+                "Você digitou uma entrada inválida"
+        );
 
         BinMinHeap heap = new BinMinHeap(Integer.parseInt(input));
         heap.carregaDados();
@@ -133,26 +107,25 @@ public class Main {
         heap.imprime();
         heap.aplicaHuffman();
 
-        do {
-            StringOut.printInputDialog("Digite um texto codificado com base no dicionário");
-            input = StringIn.getInstance().textInput();
-
-            if (!StringFormat.isValid(input, "^.+$")) {
-                StringOut.printError("Você digitou uma entrada inválida");
-            } else {
-                valid = true;
-            }
-        } while (!valid);
+        input = StringIn.getInstance().getInput(
+                "Digite um texto codificado com base no dicionário",
+                "^.+$",
+                "Você digitou uma entrada inválida"
+        );
 
         heap.decode(input);
 
+        returnToMenu();
     }
 
     private static void returnToMenu() {
         StringOut.printNewLine();
         StringOut.printSeparator();
-        StringOut.printInputDialog("Pressione enter para voltar para o menu ou digite quit para sair");
-        input = StringIn.getInstance().textInput();
+        input = StringIn.getInstance().getInput(
+                "Digite menu para voltar ou exit para sair",
+                "^.+$",
+                "Você digitou uma entrada inválida"
+        );
         showMenu();
     }
 }
