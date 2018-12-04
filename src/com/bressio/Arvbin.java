@@ -87,6 +87,8 @@ public class Arvbin implements Comparable<Arvbin>{
         StringOut.printTitleBlock("Texto codificado:");
         StringOut.printNewLine();
 
+        Stopwatch stopwatch = new Stopwatch();
+
         for (char c : input.toCharArray()) {
             String code = dictionary.get(c);
             StringOut.printInline(code);
@@ -101,13 +103,13 @@ public class Arvbin implements Comparable<Arvbin>{
         StringOut.printBlock("Tamanho original: " + original + (original >= 2 ? " bytes" : " byte"));
         StringOut.printBlock("Tamanho comprimido: " + compressed + (compressed >= 2 ? " bytes" : " byte"));
         StringOut.printBlock("Redução: " + (int) (((float) compressed / original) * 100) + "%");
+
+        stopwatch.stop("Tempo de execução do encoding:");
     }
 
     public void encode(String input) {
         int size = 0;
 
-        StringOut.printNewLine();
-        StringOut.printSeparator();
         StringOut.printTitleBlock("Texto codificado:");
         StringOut.printNewLine();
 

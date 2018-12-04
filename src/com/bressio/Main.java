@@ -32,7 +32,7 @@ public class Main {
 
             input = StringIn.getInstance().textInput();
 
-            if (!StringFormat.isValid(input, "^\\d$")) {
+            if (!StringFormat.isValid(input, "^[1-2]$")) {
                 StringOut.printError("Você digitou uma opção inválida");
             } else {
                 valid = true;
@@ -65,8 +65,16 @@ public class Main {
         heap.carregaDados();
         StringOut.printTitleBlock("Heap binário gerado:");
         heap.imprime();
+
+        Stopwatch stopwatch = new Stopwatch();
         heap.aplicaHuffman();
+        stopwatch.stop("Tempo de execução do algoritmo de Huffman:");
+
+        StringOut.printNewLine();
+        StringOut.printSeparator();
         heap.mostraCodigos();
+
+        returnToMenu();
     }
 
     private static void autoEncoding() {
@@ -83,11 +91,29 @@ public class Main {
             }
         } while (!valid);
 
+        Stopwatch stopwatchA = new Stopwatch();
+
         BinMinHeap heap = new BinMinHeap(StringFormat.countUniqueCharacters(input), input);
         heap.carregaDados(input);
         StringOut.printTitleBlock("Heap binário gerado:");
         heap.imprime();
+
+        Stopwatch stopwatchB = new Stopwatch();
         heap.aplicaHuffman();
+        stopwatchB.stop("Tempo de execução do algoritmo de Huffman:");
+
         heap.mostraCodigos();
+
+        stopwatchA.stop("Tempo de execução total:");
+
+        returnToMenu();
+    }
+
+    private static void returnToMenu() {
+        StringOut.printNewLine();
+        StringOut.printSeparator();
+        StringOut.printInputDialog("Pressione enter para voltar para o menu ou digite quit para sair");
+        input = StringIn.getInstance().textInput();
+        showMenu();
     }
 }

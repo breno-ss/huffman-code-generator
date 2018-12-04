@@ -5,7 +5,7 @@ import static com.bressio.StringFormat.repeat;
 public final class StringOut {
 
     private enum Color {
-        RESET("\u001B[0m"), GREEN("\u001B[32m"), RED("\u001B[31m"), BLUE("\u001B[34m");
+        RESET("\u001B[0m"), GREEN("\u001B[32m"), RED("\u001B[31m"), BLUE("\u001B[34m"), PURPLE("\u001B[35m");
 
         Color(String color) {
             this.color = color;
@@ -43,6 +43,14 @@ public final class StringOut {
 
     public static void printTitleBlock(String str) {
         System.out.println(Color.BLUE.getColor() +
+                repeat("-", str.length() + 10) + '\n' +
+                "| " + repeat(" ", 3) + str + repeat(" ", 3) + " |" + '\n' +
+                repeat("-", str.length() + 10));
+        resetColor();
+    }
+
+    public static void printFootnote(String str) {
+        System.out.println(Color.PURPLE.getColor() +
                 repeat("-", str.length() + 10) + '\n' +
                 "| " + repeat(" ", 3) + str + repeat(" ", 3) + " |" + '\n' +
                 repeat("-", str.length() + 10));

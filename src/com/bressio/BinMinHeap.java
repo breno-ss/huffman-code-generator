@@ -154,7 +154,7 @@ public class BinMinHeap {
         StringOut.printTitleBlock("Dicionário:");
         StringOut.printBlock("Símbolo\t|\tCodificação");
         vetor[1].mostraCodigo("");
-
+        StringOut.printNewLine();
         StringOut.printSeparator();
         if (input != null) {
             vetor[1].encode(input);
