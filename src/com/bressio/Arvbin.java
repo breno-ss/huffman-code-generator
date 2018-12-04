@@ -43,7 +43,7 @@ public class Arvbin implements Comparable<Arvbin>{
 
     /* Novo método para imprimir os códigos de Huffman de cada símbolo na árvore. */
     public void mostraCodigo(String codigo) {
-        if (simbolo != '\t') {
+        if (simbolo != '\f') {
             StringOut.printBlock(simbolo + "\t\t|\t\t" + codigo);
             dictionary.put(simbolo, codigo);
         } else {

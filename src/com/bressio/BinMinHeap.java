@@ -133,7 +133,7 @@ public class BinMinHeap {
             Arvbin a1 = removeMin();
             Arvbin a2 = removeMin();
 
-            Arvbin parent = new Arvbin('\t', a1.getFrequencia() + a2.getFrequencia(), a1, a2);
+            Arvbin parent = new Arvbin('\f', a1.getFrequencia() + a2.getFrequencia(), a1, a2);
 
             insere(parent);
 

@@ -37,7 +37,7 @@ public final class StringOut {
     }
 
     public static void printBlock(String str) {
-        System.out.println(Color.BLUE.getColor() + str);
+        System.out.println(Color.BLUE.getColor() + str.replaceAll("\\f", " "));
         resetColor();
     }
 
@@ -58,7 +58,7 @@ public final class StringOut {
     }
 
     public static void printInline(String str) {
-        System.out.print(Color.BLUE.getColor() + str);
+        System.out.print(Color.BLUE.getColor() + str.replaceAll("\\f", " "));
         resetColor();
     }
 
