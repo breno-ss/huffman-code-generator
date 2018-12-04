@@ -105,7 +105,9 @@ public class Main {
         heap.carregaDados();
         StringOut.printTitleBlock("Heap binário gerado:");
         heap.imprime();
+        Stopwatch stopwatchB = new Stopwatch();
         heap.aplicaHuffman();
+        stopwatchB.stop("Tempo de execução do algoritmo de Huffman:");
 
         input = StringIn.getInstance().getInput(
                 "Digite um texto codificado com base no dicionário",
