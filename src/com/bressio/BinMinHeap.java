@@ -163,6 +163,10 @@ public class BinMinHeap {
         }
     }
 
+    public void decode(String input) {
+        vetor[1].decode(input);
+    }
+
     /* Insere x na heap. */
     public void insere(Arvbin x) {
         if (tam == n) {

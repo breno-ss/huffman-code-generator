@@ -129,6 +129,28 @@ public class Arvbin implements Comparable<Arvbin>{
         StringOut.printBlock("Redução: " + (int) (((float) compressed / original) * 100) + "%");
     }
 
+    public void decode(String input) {
+        Arvbin current = this;
+        StringBuilder text = new StringBuilder();
+
+        for (char c : input.toCharArray()) {
+            if (c == '0') {
+                current = current.esq;
+            } else {
+                current = current.dir;
+            }
+
+            if (current.esq == null && current.dir == null) {
+                text.append(current.simbolo);
+                current = this;
+            }
+        }
+        StringOut.printTitleBlock("Texto decodificado:");
+        StringOut.printNewLine();
+        StringOut.printInline(text.toString());
+
+    }
+
     public int getFrequencia() {
         return frequencia;
     }
